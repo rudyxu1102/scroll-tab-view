@@ -1,0 +1,33 @@
+.list-container {
+  padding: 40rpx 40rpx 0 40rpx;
+}
+
+.list-item {
+  display: inline-block;
+  margin-bottom: 20rpx;
+  margin-right: 40rpx;
+  width:310rpx;
+  height: 450prx;
+  border: 1rpx solid #ccc;
+  line-height: 450rpx;
+  text-align: center;
+}
+
+.list-item:nth-child(2n) {
+  margin-right: 0;
+}
+
+.center-loading {
+  text-align: center;
+}
+
+.footer-loading {
+  text-align: center;
+}
+
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent;
+    display:none;
+}

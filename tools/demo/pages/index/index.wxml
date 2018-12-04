@@ -1,0 +1,17 @@
+<!-- index.wxml -->
+<scroll-tab-view 
+    id="scroll-tab-view"
+    firstTab="{{firstTab}}"
+    secondTab="{{secondTab}}"
+    firstTabTitle="模板分类"
+    secondTabTitle="价格筛选"
+    bindswitchEvent="getContentList">
+    <view wx:for="{{firstTab}}" wx:key="index"  slot="{{'tab-content-' + index}}" class="list-container">
+        <view class="center-loading" wx:if="{{loadingList[index] && contentList[index].length === 0}}">正在加载...</view>  
+        <view wx:for="{{contentList[index]}}" wx:key="index" class="list-item">{{item.name}}</view>
+        <view class="footer-loading">
+            <view wx:if="{{noMoreList[index] && contentList[index].length >= 6}}">已经到底了</view>
+            <view wx:if="{{!noMoreList[index] && contentList[index].length > 0}}">加载中...</view>
+        </view>
+    </view>
+</scroll-tab-view>
