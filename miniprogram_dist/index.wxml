@@ -1,0 +1,50 @@
+<view class="scroll-container" style="height: {{winHeight + 99}}rpx">
+    <view class="scroll-tab-header">
+        <scroll-view scroll-x="true" class="tab-scroll" scroll-left="{{scrollLeft}}" scroll-with-animation>
+            <view 
+                wx:for="{{firstTab}}" 
+                wx:key="index"
+                class="tab-item {{firstTabIndex === index ? 'active' : ''}}"  
+                data-current="{{index}}" 
+                bindtap="clickNav">{{item.name}}</view>
+        </scroll-view>
+        <icon 
+            wx:if="{{secondTab.length > 0}}"
+            class="show-more-icon" 
+            style="background-image:url('/pages/image/slowup.png')"
+            catchtap="showPanel"></icon>
+        <view class="more-options {{isShowPanel ? 'panel-visible' : 'panel-hidden'}}">
+            <view class="option-header">{{firstTabTitle}}</view>
+            <view class="option-btn-box">
+                <view 
+                    wx:for="{{firstTab}}" 
+                    wx:key="index" 
+                    class="option-item {{firstTabIndex === index ? 'first-active' : ''}}"
+                    data-current="{{index}}" 
+                    bindtap="clickPanelFirstTab">{{item.name}}</view>
+            </view>
+            <view class="option-header" style="margin-top: 5rpx">{{secondTabTitle}}</view>
+            <view class="option-btn-box">
+                <view 
+                    wx:for="{{secondTab}}" 
+                    wx:key="index"
+                    class="option-item {{secondTabIndex === index ? 'second-active' : ''}}"
+                    data-current="{{index}}" 
+                    bindtap="clickPanelSecondTab">{{item.name}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="option-mask {{isShowPanel ? 'mask-visible' : 'mask-hidden'}}" catchtap="hidePanel" wx:if="{{isShowPanel}}"></view>
+    <swiper 
+        class="tab-content" 
+        current="{{firstTabIndex}}" 
+        duration="300" 
+        bindchange="switchTab"
+        style="height:{{winHeight}}rpx">
+        <swiper-item wx:for="{{firstTab}}" wx:key="index">
+            <scroll-view scroll-y="{{isScroll}}" style='height: 100%' bindscrolltolower="scrollToBottom" enable-back-to-top>
+                <slot name="{{'tab-content-' + index}}"></slot>
+            </scroll-view>
+        </swiper-item>
+    </swiper>
+</view>

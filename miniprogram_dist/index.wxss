@@ -1,0 +1,150 @@
+.scroll-container {
+    padding-top: 99rpx;    
+    box-sizing: border-box;
+}
+
+.scroll-tab-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99; 
+    width: 100%;   
+}
+
+.tab-scroll {
+    padding: 0rpx 92rpx 0 47rpx;
+    height: 99rpx;
+    line-height: 99rpx;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1rpx solid #E6E6E6;
+    overflow: hidden;
+    background: #fff;
+    font-size: 28rpx;
+    white-space: nowrap;
+}
+
+.more-options {
+    box-sizing:border-box;
+    padding: 26rpx 22rpx 22rpx 48rpx;
+    background: #fff;
+    width: 100%;
+    z-index: -1;
+    position: fixed;
+}
+
+.panel-visible {
+    visibility: visible;
+    transform: translateY(0rpx);
+    transition: transform 200ms ease;
+}
+
+.panel-hidden {
+    visibility: hidden;
+    transform: translateY(-100%);
+    transition: visibility 0ms ease 200ms, transform 200ms ease;
+}
+
+.option-header {
+    margin-top: 11rpx;
+    margin-bottom: 17rpx;
+    color: #999999;
+    font-size: 24rpx;
+}
+
+.option-btn-box {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.option-item {
+    flex: none;
+    margin-bottom: 26rpx;
+    margin-right: 26rpx;
+    width:144rpx;
+    height:60rpx;
+    line-height: 60rpx;
+    border-radius: 6rpx;
+    background: #F6F6F6;
+    font-size:24rpx;
+    color: #333333;
+    text-align: center;
+}
+
+.option-item.first-active {
+    color: #3164FF;
+}
+
+.option-item.second-active {
+    color: #3164FF;    
+}
+
+.option-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: rgba(0,0,0,0.7);
+    z-index: 97;
+}
+
+.mask-visible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 200ms ease;    
+}
+
+.mask-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 200ms ease;
+}
+
+.tab-item {
+    display: inline-block;
+    margin-right: 48rpx;    
+    height: 100%;
+    color: #666666;
+    position: relative;    
+}
+
+.tab-item:last-child {
+    margin-right: 0rpx;
+}
+
+.tab-item.active {
+    color: #3164FF;
+    position: relative;
+}
+
+.tab-item.active:after {
+    content: "";
+    display: block;
+    height: 4rpx;
+    width: 48rpx;
+    background: #3164FF;
+    position: absolute;
+    bottom: 17rpx;
+    left: 50%;
+    margin-left: -24rpx;
+    border-radius: 2rpx;
+    box-shadow:0rpx 2rpx 8rpx 0rpx rgba(49,100,255,0.5);
+}
+
+.show-more-icon {
+    display: inline-block;
+    position: fixed;
+    right: 36rpx;
+    top: 28rpx;
+    width: 44rpx;
+    height: 44rpx;
+    background-size: 30rpx 28rpx;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.tab-content {
+    box-sizing: border-box;
+}

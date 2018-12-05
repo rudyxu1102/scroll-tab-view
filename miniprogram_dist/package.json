@@ -1,0 +1,15 @@
+{
+  "name": "scroll-tab-view",
+  "version": "1.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FatDong1/scroll-tab-view.git"
+  },
+  "description": "wx-miniprogram custom-component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "FatDong1",
+  "license": "ISC"
+}
