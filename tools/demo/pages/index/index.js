@@ -99,7 +99,7 @@ Page({
 
 		console.log(`第${firstTabIndex}个页面，获取一级分类${firstTabIndex}，二级分类${secondTabIndex}的当前页面第${scrollPage}页数据`);
 
-		// 获取数据
+		// 模拟获取数据
 		setTimeout(function () {
 			let temData = {
 				[`loadingList[${pageIndex}]`]: 0,
@@ -110,23 +110,28 @@ Page({
 			}, {
 				name: 'hello wechat'
 			}, {
-				name: 'hello faisco'
+				name: 'hello today'
 			}, {
-				name: 'hello fuhua'
+				name: 'hello beauty'
 			}, {
-				name: 'hello wcd'
+				name: 'hello guys'
 			}, {
 				name: 'hello everyone'
 			}];
+
+			// 1. success请求成功
 			let length = that.data.contentList[pageIndex] ? that.data.contentList[pageIndex].length : 0;
 			res.forEach(function (element, index) {
 				temData[`contentList[${pageIndex}][${length + index}]`] = element
 			});
 			// 记录组件的页面状态
 			currentPage.changePageStateList(firstTabIndex, secondTabIndex, scrollPage);
-			// 请求失败的话，可以记录组件的状态为负数，下次进入的时候isReLoad会被设为true
-			// currentPage.changePageStateList(-100, -100, 100);
 			that.setData(temData);
+			
+			// 2. 请求失败
+			// 可以记录组件的状态为负数，下次进入的时候isReLoad会被设为true
+			// currentPage.changePageStateList(-100, -100, 100);
+
 		}, 500);
 
 
