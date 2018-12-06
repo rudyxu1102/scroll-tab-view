@@ -1,11 +1,48 @@
-# miniprogram-custom-component
+# scroll-tab-view
 
-小程序自定义组件脚手架
+小程序水平切换多个页面组件
 
-## 使用
+## 效果
+![动画](./image/Animation.gif)
 
-* 使用[命令行工具](https://github.com/wechat-miniprogram/miniprogram-cli)进行初始化
-* 直接从 github 上 clone 下来
+## 组件文档
+### 描述
+水平滑动切换页面组件【加强版】。
+- 顶部tab可以滚动，而且还有二级tab，支持滚动加载。
+- 每个切换的页面都记录了当前页面的一级分类tab的index、二级分类的tab的index、当前页面数据的页数scrollPage。
+- 可以判断是否需要重新加载数据。当一级分类tab的index、二级分类的tab的index与之前的旧数据不同时，isReload会变为true，通过触发switchEvent传播到父组件，从而使父组件重新发请求去获取数据。
+
+### 定义字段
+| 字段 | 类型 | 是否必填 | 默认值 | 描述 |
+| :------: | :------: | :------: | :-----:| :------: |
+| firstTab | Array | 是 | 无 | 一级分类。item.name为tab的名字 |
+| secondTab | Array | 否 | 无 | 二级分类。item.name为tab的名字 |
+| firstTabTitle | String | 否 | 无 | 一级分类的标题描述 |
+| secondTabTitle | String | 否 | 无 | 二级分类的标题描述 |
+
+### slot插槽
+| slot | 描述 |
+| :---: | :---: |
+| tab-content-0 | 第一个页面 |
+| tab-content-1 | 第二个页面 |
+| ... | ... |
+| tab-content-{index} | 第n个页面 |
+
+
+### 绑定的事件
+| 键值 | 触发时机 | 携带对象 |
+| :---: | :---: | :----: |
+| bindswitchEvent| 切换页面的时候触发 | e.detail |
+
+### e.detail对象
+| 字段 | 描述 |
+|:--: | :--:|
+| firstTabIndex | 一级分类tab的index |
+| secondTabIndex | 二级分类tab的index |
+| firstTabObj | 一级分类数组的当前元素 |
+| secondTabObj | 二级分类的数组元素 |
+| scrollPage | 当前页面滚动加载的页数 |
+| isReLoad | 是否需要重新获取当前页面的数据。当secondTabIndex与旧数据不同时，为true|
 
 ## 开发
 
@@ -30,40 +67,6 @@ npm run watch
 > ps: 如果 minirpogram\_dev 目录下已存在小程序 demo，执行`npm run dev`则不会再将 tools 下的 demo 拷贝到此目录下。而执行`npm run watch`则会监听 tools 目录下的 demo 变动并进行拷贝。
 
 3. 生成的 miniprogram\_dev 目录是一个小程序项目目录，以此目录作为小程序项目目录在开发者工具中打开即可查看自定义组件被使用的效果。
-
-4. 进阶：
-
-* 如果有额外的构建需求，可自行修改 tools 目录中的构建脚本。
-* 内置支持 less、sourcemap 等功能，默认关闭。如若需要可以自行修改 tools/config.js 配置文件中相关配置。
-* 内置支持多入口构建，如若需要可自行调整 tools/config.js 配置文件的 entry 字段。
-* 默认开启 eslint，可自行调整规则或在 tools/config.js 中注释掉 eslint-loader 行来关闭此功能。
-
-## 发布
-
-> ps: 发布前得确保已经执行构建，小程序 npm 包只有构建出来的目录是真正被使用到的。
-
-1. 如果还没有 npm 帐号，可以到[ npm 官网](https://www.npmjs.com/)注册一个 npm 帐号。
-2. 在本地登录 npm 帐号，在本地执行：
-
-```
-npm adduser
-```
-
-或者
-
-```
-npm login
-```
-
-3. 在已完成编写的 npm 包根目录下执行：
-
-```
-npm publish
-```
-
-到此，npm 包就成功发布到 npm 平台了。
-
-> PS：一些开发者在开发过程中可能修改过 npm 的源，所以当进行登录或发布时需要注意要将源切回 npm 的源。
 
 ## 目录结构
 
@@ -92,6 +95,10 @@ npm publish
 ```
 
 > PS：对外暴露的 js 模块/自定义组件请放在 src 目录下，不宜放置在过深的目录。另外新增的暴露模块需要在 tools/config.js 的 entry 字段中补充，不然不会进行构建。
+
+
+
+
 
 ## 测试
 
