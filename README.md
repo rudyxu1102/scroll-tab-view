@@ -6,7 +6,9 @@
 ![动画](./image/Animation.gif)
 
 ## 如何使用
-用微信开发者工具打开/tools/demo/
+### 两种方法
+- 用微信开发者工具打开/tools/demo/，然后直接在项目引入代码
+- 使用npm。npm包为`scroll-tab-view`
 
 ## 组件文档
 ### 描述
